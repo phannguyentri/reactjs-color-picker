@@ -4,7 +4,7 @@ class ColorPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color : ['red', 'blue', 'green', '#ccc']
+      color     : ['red', 'blue', 'green', '#ccc']
     };
   }
 

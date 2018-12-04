@@ -14,12 +14,26 @@ class App extends Component {
       fontSize  : 15
     };
     this.onSetColor = this.onSetColor.bind(this);
-
+    this.onSetSize  = this.onSetSize.bind(this);
+    this.onReset    = this.onReset.bind(this);
   }
 
-  onSetColor(params){
+  onSetColor(responses){
     this.setState({
-      color : params
+      color : responses
+    });
+  }
+
+  onSetSize(responses){
+    this.setState({
+      fontSize : responses
+    });
+  }
+
+  onReset(responses){
+    this.setState({
+      color     : 'red',
+      fontSize  : 15
     });
   }
 
@@ -31,11 +45,11 @@ class App extends Component {
             <ColorPicker color={this.state.color} onReceiveColor={this.onSetColor}/>
           </div>
           <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <SizeSetting/>
-            <Reset/>
+            <SizeSetting size={this.state.fontSize} onReceiveSize={this.onSetSize}/>
+            <Reset onReceiveReset={this.onReset}/>
           </div>
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <Result resultColor={this.state.color}/>
+            <Result resultColor={this.state.color} resultFontSize={this.state.fontSize}/>
           </div>
         </div>
       </div>
